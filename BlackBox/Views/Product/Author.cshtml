@@ -1,0 +1,53 @@
+﻿@model BlackBox.Entities.ProductAdditionals.Author
+
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <img class="w-100 rounded" src="@Model.ImageLink" />
+        </div>
+        <div class="col-8">
+            <div class="display-3">@Model.Name</div>
+            <br />
+            <br />
+            <div>@Model.Description</div>
+        </div>
+    </div>
+    <br />
+    <br />
+    @if (Model.Books.Count() != 0)
+    {
+        <h2>Книги автора:</h2>
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    @foreach (BlackBox.Entities.ProductAdditionals.Book item in Model.Books)
+                    {
+                        <div class="col mb-5">
+                            <a class="text-decoration-none" href="@Url.Action("Book", "Product", new {id = item.ID})">
+                                <div class="card h-100">
+                                    <!-- Sale badge-->
+                                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+                                    <!-- Product image-->
+                                    <img class="card-img-top" src="@item.PhotoLink" alt="..." />
+                                    <!-- Product details-->
+                                    <div class="card-body p-4">
+                                        <div class="text-center">
+                                            <!-- Product name-->
+                                            <h5 class="fw-bolder">@item.Name</h5>
+                                            <!-- Product price-->
+                                            @item.Cost р.
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </section>
+
+    }
+</div>

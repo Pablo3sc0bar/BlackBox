@@ -1,0 +1,14 @@
+﻿@model BlackBox.Entities.Accounting.Role
+@{
+    Layout = "_AdminLayout";
+}
+
+<h2>Добавление роли</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Name">Тип:</label>
+        <input class="form-control" asp-for="Name" placeholder="Модератор"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+</form>

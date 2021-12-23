@@ -1,0 +1,28 @@
+﻿@model IEnumerable<BlackBox.Entities.ProductAdditionals.Author>
+@{
+    Layout = "_AdminLayout";
+}
+
+<a class="badge badge-primary" href="@Url.Action("AddAuthor")">Добавить автора</a>
+<h2>Список авторов:</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Имя</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (BlackBox.Entities.ProductAdditionals.Author author in Model)
+        {
+            <tr>
+                <th scope="row">@author.ID</th>
+                <td>@author.Name</td>
+                <td>
+                    @Html.ActionLink("Изменить", "EditAuthor", new { id = author.ID }) |
+                    @Html.ActionLink("Удалить", "DeleteAuthor", new { id = author.ID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

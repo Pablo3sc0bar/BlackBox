@@ -1,0 +1,30 @@
+﻿@model IEnumerable<BlackBox.Entities.Accounting.Role>
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="container">
+    <a class="badge badge-primary" href="@Url.Action("AddRole")">Добавить роль</a>
+    <h2>Список ролей:</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Название</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (BlackBox.Entities.Accounting.Role role in Model)
+            {
+                <tr>
+                    <th scope="row">@role.ID</th>
+                    <td>@role.Name</td>
+                    <td>
+                        @Html.ActionLink("Изменить", "EditRole", new { id = role.ID }) |
+                        @Html.ActionLink("Удалить", "DeleteRole", new { id = role.ID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

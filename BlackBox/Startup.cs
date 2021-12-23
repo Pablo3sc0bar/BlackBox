@@ -35,12 +35,12 @@ namespace BlackBox
             services.AddControllersWithViews();
 
             // установка конфигурации подключения
-            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            //    .AddCookie(options => //CookieAuthenticationOptions
-            //    {
-            //        options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
-            //        options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
-            //    });
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => //CookieAuthenticationOptions
+                {
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                    options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                });
 
             // use in memory for testing.
             services
@@ -66,8 +66,8 @@ namespace BlackBox
 
             app.UseRouting();
 
-            //app.UseAuthentication();    // аутентификация
-            //app.UseAuthorization();     // авторизация
+            app.UseAuthentication();    // аутентификация
+            app.UseAuthorization();     // авторизация
 
             app.UseEndpoints(endpoints =>
             {

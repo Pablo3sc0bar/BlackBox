@@ -1,0 +1,54 @@
+﻿@model BlackBox.Entities.ProductAdditionals.Book
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="container">
+    <h2>Изменение книги @Model.Name:</h2>
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Name">Название:</label>
+            <input asp-for="Name" class="form-control" placeholder="Петро 2033">
+        </div>
+        <div class="form-group">
+            <label asp-for="PhotoLink">Ссылка на фото</label>
+            <input asp-for="PhotoLink" class="form-control" placeholder="hhtp://tagduck.jpg">
+        </div>
+        <div class="form-group">
+            <select asp-for="AuthorId" class="custom-select">
+                <option> Автор</option>
+                @foreach (BlackBox.Entities.ProductAdditionals.Author author in ViewBag.Authors)
+                {
+                    <option value="@author.ID">@author.Name</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <select asp-for="JenreId" class="custom-select">
+                <option selected>Жанр</option>
+                @foreach (BlackBox.Entities.ProductAdditionals.Jenre jenre in ViewBag.Jenres)
+                {
+                    <option value="@jenre.ID">@jenre.Name</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description">Описание книги:</label>
+            <textarea asp-for="Description" class="form-control" placeholder="Книга хороша"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="ISBN">ISBN:</label>
+            <input asp-for="ISBN" class="form-control" placeholder="123" />
+        </div>
+        <div class="form-group">
+            <label asp-for="DownloadLink">Ссылка на скачивание:</label>
+            <input asp-for="DownloadLink" class="form-control" placeholder="https://..." />
+        </div>
+        <div class="form-group">
+            <label asp-for="Cost">Цена:</label>
+            <input asp-for="Cost" class="form-control" placeholder="123" />
+        </div>
+        <button type="submit" class="btn btn-primary">Изменить</button>
+    </form>
+</div>
+

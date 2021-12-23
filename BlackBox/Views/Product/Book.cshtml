@@ -1,0 +1,42 @@
+﻿@model BlackBox.Models.ProductAdditionals.BookModel
+
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <img class="w-100 rounded" src="@Model.Book.PhotoLink" />
+        </div>
+        <div class="col-8">
+            <div class="display-3">@Model.Book.Name</div>
+            <h5><a href="@Url.Action("Author", "Product", new {id = @Model.Book.AuthorId})">@Model.Book.Author.Name</a></h5>
+            <br />
+            <ul>
+
+                @if (Model.Book.ISBN != null)
+                {
+                    <li>ISBN: @Model.Book.ISBN</li>
+                }
+                @if (Model.Book.Jenre.Name != null)
+                {
+                    <li>Жанр: <a>@Model.Book.Jenre.Name</a></li>
+                }
+            </ul>
+            <br />
+            @if (Model.isBuyed)
+            {
+                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="@Url.Action("Profile", "Account")">Посмотреть в профиле</a></div>
+            }
+            else
+            {
+                <h2 class="d-inline-block"><span class="badge badge-primary">@Model.Book.Cost р.</span></h2>
+                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="@Url.Action("AddToCart", "Ordering", new { id = Model.Book.ID })">В корзину</a></div>
+            }
+            <br />
+        </div>
+        <div>
+            <div class="display-4">О товаре</div>
+            <br />
+            <p>@Model.Book.Description</p>
+        </div>
+    </div>
+</div>

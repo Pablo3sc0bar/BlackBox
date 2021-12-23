@@ -1,0 +1,16 @@
+﻿@model BlackBox.Entities.ProductAdditionals.Jenre
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="container">
+    
+    <h2>Изменение жанра @Model.Name:</h2>
+    <form method="post">
+      <div class="form-group">
+        <label asp-for="Name">Название:</label>
+        <input asp-for="Name" class="form-control" placeholder="Война и мир">
+      </div>
+      <button type="submit" class="btn btn-primary">Изменить</button>
+    </form>
+</div>

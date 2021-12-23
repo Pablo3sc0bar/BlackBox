@@ -1,0 +1,37 @@
+﻿@model IEnumerable<BlackBox.Entities.ProductAdditionals.Book>
+@{
+    Layout = "_AdminLayout";
+}
+
+<a class="badge badge-primary" href="@Url.Action("AddBook")">Добавить книгу</a>
+<h2>Список книг:</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Название</th>
+            <th>Автор</th>
+            <th>Жанр</th>
+            <th>ISBN</th>
+            <th>Цена
+        </tr>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (BlackBox.Entities.ProductAdditionals.Book book in Model)
+        {
+            <tr>
+                <th scope="row">@book.ID</th>
+                <td>@book.Name</td>
+                <td>@book.Author.Name</td>
+                <td>@book.Jenre.Name</td>
+                <td>@book.ISBN</td>
+                <td>@book.Cost</td>
+                <td>
+                    @Html.ActionLink("Изменить", "EditBook", new { id = book.ID }) |
+                    @Html.ActionLink("Удалить", "DeleteBook", new { id = book.ID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

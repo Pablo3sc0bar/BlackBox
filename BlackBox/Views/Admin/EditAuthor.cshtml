@@ -1,0 +1,24 @@
+﻿@model BlackBox.Entities.ProductAdditionals.Author
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="container">
+    <h2>Изменение автора @Model.Name:</h2>
+    <br />
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Name">ФИО автора</label>
+            <input asp-for="Name" class="form-control" value="@Model.Name">
+        </div>
+        <div class="form-group">
+            <label asp-for="ImageLink">Ссылка на фото</label>
+            <input asp-for="ImageLink" class="form-control" value="@Model.ImageLink">
+        </div>
+        <div class="form-group">
+            <label asp-for="Description">Описание автора</label>
+            <textarea asp-for="Description" class="form-control" value="@Model.Description"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Изменить</button>
+    </form>
+</div>
